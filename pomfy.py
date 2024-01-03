@@ -24,7 +24,7 @@ class FromPhotoshop(BasePhotoshopOperation):
             "optional": {}
         }
     
-    RETURN_NAMES = ("IMAGE",)
+    RETURN_NAMES = ("image",)
     RETURN_TYPES = ("IMAGE",)
 
     def func(self, id, **kwargs):
@@ -40,7 +40,7 @@ class FromPhotoshopMask(BasePhotoshopOperation):
             "optional": {}
         }
     
-    RETURN_NAMES = ("MASK",)
+    RETURN_NAMES = ("mask",)
     RETURN_TYPES = ("MASK",)
 
     def func(self, id, **kwargs):

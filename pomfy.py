@@ -10,7 +10,6 @@ def message(id, message):
         string = f"{message}"
     PromptServer.instance.send_sync("pomfy-message-handler", {"id": id, "message": string})
 
-
 class BasePhotoshopOperation():
     CATEGORY = "photoshop"
     FUNCTION = "func"
@@ -19,14 +18,29 @@ class BasePhotoshopOperation():
 
 class FromPhotoshop(BasePhotoshopOperation):
     @classmethod
-    def INPUT_TYPES(cls):  # Use cls as the convention for class methods
-        return {"optional": {
-            "layerName": ("STRING", {"default": ""}),
-            "isMask": ("BOOL", {"default": False})
+    def INPUT_TYPES(cls):
+        return {
+            "required": {"layerName": ("STRING", {"default": ""})},
+            "optional": {}
         }
-    }
+    
+    RETURN_NAMES = ("image")
+    RETURN_TYPES = ("IMAGE")
 
-    RETURN_TYPES = {"image": ("IMAGE",)}
+    def func(self, id, **kwargs):
+        for key in kwargs:
+            message(id, kwargs[key])
+        return ()
+class FromPhotoshopMask(BasePhotoshopOperation):
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {"layerName": ("STRING", {"default": ""})},
+            "optional": {}
+        }
+    
+    RETURN_NAMES = ("mask",)
+    RETURN_TYPES = ("MASK",)
 
     def func(self, id, **kwargs):
         for key in kwargs:
@@ -35,12 +49,26 @@ class FromPhotoshop(BasePhotoshopOperation):
 
 class ToPhotoshop(BasePhotoshopOperation):
     @classmethod
-    def INPUT_TYPES(cls):  # Use cls as the convention for class methods
+    def INPUT_TYPES(cls):
         return {
             "required": {"image": ("IMAGE",)},
             "optional": {
+                "layerName": ("STRING", {"default": ""})
+            }
+        }
+
+    def func(self, id, **kwargs):
+        for key in kwargs:
+            message(id, kwargs[key])
+        return ()
+        
+class ToPhotoshopMask(BasePhotoshopOperation):
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {"mask": ("MASK",)},
+            "optional": {
                 "layerName": ("STRING", {"default": ""}),
-                "isMask": ("BOOL", {"default": False})
             }
         }
 

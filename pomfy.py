@@ -24,13 +24,14 @@ class FromPhotoshop(BasePhotoshopOperation):
             "optional": {}
         }
     
-    RETURN_NAMES = ("image")
-    RETURN_TYPES = ("IMAGE")
+    RETURN_NAMES = ("IMAGE",)
+    RETURN_TYPES = ("IMAGE",)
 
     def func(self, id, **kwargs):
         for key in kwargs:
             message(id, kwargs[key])
         return ()
+
 class FromPhotoshopMask(BasePhotoshopOperation):
     @classmethod
     def INPUT_TYPES(cls):
@@ -39,7 +40,7 @@ class FromPhotoshopMask(BasePhotoshopOperation):
             "optional": {}
         }
     
-    RETURN_NAMES = ("mask",)
+    RETURN_NAMES = ("MASK",)
     RETURN_TYPES = ("MASK",)
 
     def func(self, id, **kwargs):

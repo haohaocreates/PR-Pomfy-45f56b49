@@ -1,4 +1,4 @@
-from server import PromptServer
+from server import PromptServer, BinaryEventTypes
 import torch
 import base64
 import json

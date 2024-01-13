@@ -58,6 +58,8 @@ class ToPhotoshop(BasePhotoshopOperation):
             }
         }
 
+    OUTPUT_NODE = true
+
     def func(self, id, **kwargs):
         for key in kwargs:
             message(id, kwargs[key])
@@ -72,6 +74,8 @@ class ToPhotoshopMask(BasePhotoshopOperation):
                 "layerName": ("STRING", {"default": ""}),
             }
         }
+
+    OUTPUT_NODE = true
 
     def func(self, id, **kwargs):
         for key in kwargs:

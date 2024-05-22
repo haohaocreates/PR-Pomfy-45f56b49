@@ -1,0 +1,14 @@
+[project]
+name = "pomfy"
+description = "Photoshop custom nodes inside of ComfyUi, send and get data via Photoshop UXP plugin for cross platform support"
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/Millyarde/Pomfy"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "Pomfy"
+Icon = ""
